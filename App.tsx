@@ -8,6 +8,7 @@ import {
   Text,
   useColorScheme,
 } from 'react-native';
+import Tabs from './components/Tabs';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -23,11 +24,7 @@ const App = () => {
           barStyle={isDarkMode ? 'light-content' : 'dark-content'}
           backgroundColor={backgroundStyle.backgroundColor}
         />
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={backgroundStyle}>
-            <Text>Hello React Native</Text>
-        </ScrollView>
+        <Tabs />
       </SafeAreaView>
     </NavigationContainer>
     

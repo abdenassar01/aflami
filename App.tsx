@@ -3,7 +3,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import {
   SafeAreaView,
-  ScrollView,
   StatusBar,
   Text,
   useColorScheme,
@@ -24,6 +23,8 @@ const App = () => {
           barStyle={isDarkMode ? 'light-content' : 'dark-content'}
           backgroundColor={backgroundStyle.backgroundColor}
         />
+        <Text style={{fontSize: 40}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, esse itaque. Velit laudantium saepe, voluptatem consequatur eligendi, iure magni, voluptatibus quis optio vitae molestias sunt reiciendis doloribus recusandae repudiandae ab?</Text>
+
         <Tabs />
       </SafeAreaView>
     </NavigationContainer>

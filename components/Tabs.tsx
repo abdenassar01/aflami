@@ -6,8 +6,9 @@ const Tabs = () => {
     const Tab = createBottomTabNavigator();
 
   return (
-    <Tab.Navigator>
+    <Tab.Navigator initialRouteName='Movies'>
       <Tab.Screen name='Movies' component={ Movies }/>
+      <Tab.Screen name='Series' component={ Movies }/>
     </Tab.Navigator>
   )
 }

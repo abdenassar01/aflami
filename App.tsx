@@ -1,12 +1,10 @@
-
-
+import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import {
   StatusBar,
   useColorScheme,
 } from 'react-native';
 import Tabs from './components/Tabs';
-import { Color } from './components/utils/color/colors';
 import Navbar from './components/utils/navbar/Navbar';
 
 const App = () => {

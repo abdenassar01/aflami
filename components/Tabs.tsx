@@ -1,15 +1,14 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Movies from './screens/movies/Movies';
 import Series from './screens/series/Series';
 import { Image } from 'react-native';
+import MovieStack from './screens/movie/MovieStack';
 
 const Tab = createBottomTabNavigator();
-
 
 const Tabs = () => {
   return (
     <Tab.Navigator initialRouteName='Movies' screenOptions={{ headerShown: false }}>
-      <Tab.Screen name='Movies' component={ Movies } options={{
+      <Tab.Screen name='Movies' component={ MovieStack } options={{
         tabBarIcon: () => (<Image source={ require("../asset/movie.png")} style={{width: 30, height: 30}} />)
       }}/>
       <Tab.Screen name='Series' component={ Series } options={{

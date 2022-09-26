@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { Image, TextInput, View } from "react-native";
+import { Color } from "../../color/colors";
 
 export const NavBarWrapper = styled(View)`
     padding: 0 10px;
@@ -10,17 +11,25 @@ export const NavBarWrapper = styled(View)`
 `
 
 export const Logo = styled(Image)`
-
+    width: 50px;
+    height: 50px;
 `
 
 export const Field = styled(View)`
     flex-direction: row;
+    align-items: center;
+    padding: 0 10px;
+    margin: 10px 2px;
+    border: 2px solid ${ Color.main };
+    border-radius: 50px;
+    justify-content: space-between;
 `
 
 export const InputField = styled(TextInput)`
-    width: 85%;
+    width: 80%;
 `
 
 export const SearchAvatar = styled(Image)`
-
+    height: 30px;
+    width: 30px;
 `

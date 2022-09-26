@@ -5,8 +5,8 @@ export default function Navbar() {
     <NavBarWrapper>
       <Logo source={require("../../../asset/movie.png")} />
       <Field>
-        <InputField></InputField>
-        <SearchAvatar source={require("../../../asset/movie.png")} />
+        <InputField placeholder="Tap to search"></InputField>
+        <SearchAvatar source={require("../../../asset/search.png")} />
       </Field>
     </NavBarWrapper>
   )

@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const CardWrapper = styled(Pressable)`
     padding: 5px;
+    width: 125px;
 `
 
 export const Cover = styled(Image)`

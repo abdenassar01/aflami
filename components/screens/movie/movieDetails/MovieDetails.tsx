@@ -1,6 +1,7 @@
 import { ButtonText, DetailsWrapper, GoBackBtn, Heading, Info, MovieDetailsWrapper, Qualities, QualityItem, QualityItemText, SmallHeading, Streamer, Title } from "./styles/Styles";
 
 export default function MovieDetails({ navigation }) {
+
   return (
     <MovieDetailsWrapper>
       <GoBackBtn onPress={ () => navigation.goBack() }>

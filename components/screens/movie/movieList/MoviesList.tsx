@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Text } from 'react-native';
 import { Movie } from '../../../../types/movie';
 import Card from '../../../utils/card/Card'
+import Loading from '../../../utils/loading/Loading';
 import { Wrapper } from './styles/Styles'
 
 export default function MoviesList({ navigation }: any) {
@@ -16,7 +17,6 @@ export default function MoviesList({ navigation }: any) {
       try{
         const res = await fetch("https://yts.mx/api/v2/list_movies.json?limit=21");
         const json = await res.json();
-        console.log(json.data?.movies)
         setMovies(json.data?.movies);
       }catch(ex){
         setError(true)
@@ -27,7 +27,7 @@ export default function MoviesList({ navigation }: any) {
     console.log(movies)
   },[])
 
-  if(loading) return <Text>Loading...</Text>
+  if(loading) return <Loading size={ 70 } />
   if(error) return <Text>Error Occured</Text>
 
   return (

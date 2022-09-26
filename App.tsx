@@ -6,6 +6,7 @@ import {
   useColorScheme,
 } from 'react-native';
 import Tabs from './components/Tabs';
+import Navbar from './components/utils/navbar/Navbar';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -20,6 +21,7 @@ const App = () => {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
+      <Navbar />
       <Tabs />
     </NavigationContainer>
     

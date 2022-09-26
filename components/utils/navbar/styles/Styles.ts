@@ -8,6 +8,7 @@ export const NavBarWrapper = styled(View)`
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
+    background-color: #fff;
 `
 
 export const Logo = styled(Image)`
@@ -18,7 +19,7 @@ export const Logo = styled(Image)`
 export const Field = styled(View)`
     flex-direction: row;
     align-items: center;
-    padding: 0 10px;
+    padding: 0 20px;
     margin: 10px 2px;
     border: 2px solid ${ Color.main };
     border-radius: 50px;
@@ -26,7 +27,8 @@ export const Field = styled(View)`
 `
 
 export const InputField = styled(TextInput)`
-    width: 80%;
+    width: 75%;
+    height: 40px;
 `
 
 export const SearchAvatar = styled(Image)`

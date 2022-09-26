@@ -6,6 +6,7 @@ import {
   useColorScheme,
 } from 'react-native';
 import Tabs from './components/Tabs';
+import { Color } from './components/utils/color/colors';
 import Navbar from './components/utils/navbar/Navbar';
 
 const App = () => {
@@ -19,7 +20,7 @@ const App = () => {
     <NavigationContainer>
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+        backgroundColor={ "#fff" }
       />
       <Navbar />
       <Tabs />

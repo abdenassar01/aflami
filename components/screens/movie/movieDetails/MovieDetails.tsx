@@ -1,9 +1,11 @@
-import { View, Text } from 'react-native'
+import { ButtonText, GoBackBtn, MovieDetailsWrapper } from "./styles/Styles";
 
-export default function MovieDetails() {
+export default function MovieDetails({ navigation }) {
   return (
-    <View>
-      <Text>MovieDetails</Text>
-    </View>
+    <MovieDetailsWrapper>
+      <GoBackBtn onPress={ () => navigation.goBack() }>
+        <ButtonText>Go Back</ButtonText>
+      </GoBackBtn>
+    </MovieDetailsWrapper>
   )
 }

@@ -14,6 +14,7 @@ export default function MoviesList({ navigation }: any) {
   useEffect(() => {
     async function fetchData(){
       setLoading(true);
+     
       try{
         const res = await fetch("https://yts.mx/api/v2/list_movies.json?limit=21");
         const json = await res.json();
@@ -21,10 +22,10 @@ export default function MoviesList({ navigation }: any) {
       }catch(ex){
         setError(true)
       }
+      
       setLoading(false);
     } 
     fetchData();
-    console.log(movies)
   },[])
 
   if(loading) return <Loading size={ 70 } />
@@ -34,7 +35,7 @@ export default function MoviesList({ navigation }: any) {
     <Wrapper contentContainerStyle={{ flexDirection: "row", flexWrap: "wrap", width: "100%", justifyContent: "center" }} >
 
       {
-        movies.map((movie: Movie) => <Card navigation={ navigation } movie={ movie } /> )
+        movies.map((movie: Movie) => <Card key={ movie.id } navigation={ navigation } movie={ movie } /> )
       }
       
     </Wrapper>

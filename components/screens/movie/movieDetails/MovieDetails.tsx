@@ -1,6 +1,36 @@
+import { useEffect, useState } from "react";
+import { Text } from "react-native";
+import { Movie } from "../../../../types/movie";
+import Loading from "../../../utils/loading/Loading";
 import { ButtonText, DetailsWrapper, GoBackBtn, Heading, Info, MovieDetailsWrapper, Qualities, QualityItem, QualityItemText, SmallHeading, Streamer, Title } from "./styles/Styles";
 
-export default function MovieDetails({ navigation }) {
+export default function MovieDetails({ navigation, route }: any) {
+
+  const id = route.params.id;
+
+  const [ movie, setMovie ] = useState<Movie | undefined>(undefined);
+  const [ loading, setLoading ] = useState<Boolean>(false);
+  const [ error, setError ] = useState<Boolean>(false);
+
+  useEffect(() => {
+    async function fetchData(){
+      setLoading(true);
+     
+      try{
+        const res = await fetch(`https://yts.torrentbay.to/api/v2/movie_details.json?movie_id=${ id }`);
+        const json = await res.json();
+        setMovie(json.data?.movie);
+      }catch(ex){
+        setError(true)
+      }
+      
+      setLoading(false);
+    } 
+    fetchData();
+  },[])
+
+  if(loading) return <Loading size={ 70 } />
+  if(error) return <Text>Error Occured</Text>
 
   return (
     <MovieDetailsWrapper>
@@ -8,22 +38,21 @@ export default function MovieDetails({ navigation }) {
         <ButtonText>Go Back</ButtonText>
       </GoBackBtn>
       <DetailsWrapper>
-        <Streamer source={{ uri: "https://sydneymillage.files.wordpress.com/2021/05/bear-cross.jpg?w=301" }} />
-        <Title>A Cross To Bear (2012)</Title>
+        <Streamer source={{ uri: movie?.background_image }} />
+        <Title>{ movie?.title }</Title>
         <Info>
-          <SmallHeading>Rating: {6.8}</SmallHeading>
-          <SmallHeading>Year: {2012}</SmallHeading>
+          <SmallHeading>Rating: { movie?.rating }</SmallHeading>
+          <SmallHeading>Year: { movie?.year }</SmallHeading>
         </Info>
         <Heading>Available Quality:</Heading>
         <Qualities horizontal={true}>
-          <QualityItem onPress={ () => console.log("I'm Pressed") }><QualityItemText>1080p</QualityItemText></QualityItem>
-          <QualityItem onPress={ () => console.log("I'm Pressed") }><QualityItemText>720p</QualityItemText></QualityItem>
-          <QualityItem onPress={ () => console.log("I'm Pressed") }><QualityItemText>480p</QualityItemText></QualityItem>
-          <QualityItem onPress={ () => console.log("I'm Pressed") }><QualityItemText>360p</QualityItemText></QualityItem>
+          {
+            movie?.torrents.map(torrent => <QualityItem key={ torrent.quality } onPress={ () => console.log(`${ torrent.size } has been pressed`) }><QualityItemText>{ torrent.quality }</QualityItemText></QualityItem>)
+          }
         </Qualities>
         <Heading>Discription: </Heading>
         <SmallHeading>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi voluptate, perferendis dolor recusandae debitis illo voluptatibus ratione quasi sint qui tempore inventore sit esse quo rem! Cupiditate unde quibusdam obcaecati.
+          { movie?.description_full }
         </SmallHeading>
       </DetailsWrapper>
     </MovieDetailsWrapper>

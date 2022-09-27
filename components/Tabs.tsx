@@ -9,10 +9,10 @@ const Tabs = () => {
   return (
     <Tab.Navigator initialRouteName='Movies' screenOptions={{ headerShown: false }}>
       <Tab.Screen name='Movies' component={ MovieStack } options={{
-        tabBarIcon: () => (<Image source={ require("../asset/movie.png")} style={{width: 30, height: 30}} />)
+        tabBarIcon: () => (<Image source={ require("../asset/film.png")} style={{width: 30, height: 30}} />)
       }}/>
       <Tab.Screen name='About' component={ AboutScreen } options={{
-        tabBarIcon: () => (<Image source={ require("../asset/film.png")} style={{width: 30, height: 30}} />)
+        tabBarIcon: () => (<Image source={ require("../asset/beard.png")} style={{width: 30, height: 30}} />)
       }}/>
     </Tab.Navigator>
   )

@@ -27,7 +27,7 @@ export default function MovieDetails({ navigation, route }: any) {
       setLoading(false);
     } 
     fetchData();
-  },[])
+  },[id])
  
   const handlePress = useCallback(async (url: string) => {
     const supported = await Linking.canOpenURL(url);
@@ -56,7 +56,7 @@ export default function MovieDetails({ navigation, route }: any) {
         <Heading>Genres:</Heading>
         <GenresWrapper>
           {
-            movie?.genres.map(genre => <GenreItem key={ Math.random() } onPress={ () => console.log(genre) }><Genre>{ genre }</Genre></GenreItem>)
+            movie?.genres.map(genre => <GenreItem key={ Math.random() } onPress={ () => navigation.navigate("MovieByCategory", { genre: genre }) }><Genre>{ genre }</Genre></GenreItem>)
           }
         </GenresWrapper>
         <Info>

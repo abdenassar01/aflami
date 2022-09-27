@@ -5,9 +5,9 @@ import Loading from '../../../utils/loading/Loading';
 import { useInfiniteQuery } from "react-query";
 import axios from "axios";
 
-export default function MoviesList({ navigation }: any) {
+export default function MovieByCategory({ navigation, route }: any) {
 
-    const genre = "Drama";
+    const genre = route.params.genre;
 
   const { isLoading, data, hasNextPage, fetchNextPage, isFetchingNextPage, isError } =
     useInfiniteQuery('movies', async ({ pageParam = 1 }) => {
@@ -22,7 +22,7 @@ export default function MoviesList({ navigation }: any) {
       getNextPageParam: (lastPage, pages) => {
         if (lastPage.nextPage < lastPage.totalPages) return lastPage.nextPage;
         return undefined;
-      }
+      }, cacheTime: 0
     });
 
   const loadMore = () => {

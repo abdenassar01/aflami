@@ -1,4 +1,4 @@
-import { Field, GoHome, InputField, Logo, NavBarWrapper, SearchAvatar } from "./styles/Styles";
+import { Field, GoHome, InputField, Logo, NavBarWrapper, Search, SearchAvatar } from "./styles/Styles";
 import { useNavigation } from '@react-navigation/native';
 
 export default function Navbar() {
@@ -12,7 +12,9 @@ export default function Navbar() {
       </GoHome>
       <Field>
         <InputField placeholder="Tap to search"></InputField>
-        <SearchAvatar source={require("../../../asset/search.png")} />
+        <Search onPress={ () => console.log("Hello World") }>
+          <SearchAvatar source={require("../../../asset/search.png")} />
+        </Search>
       </Field>
     </NavBarWrapper>
   )

@@ -4,11 +4,19 @@ import Card from '../../../utils/card/Card'
 import Loading from '../../../utils/loading/Loading';
 import { useInfiniteQuery } from "react-query";
 import axios from "axios";
+import { useState } from 'react';
+import DropDownPicker from 'react-native-dropdown-picker';
+import { Genre, GENRES } from '../../../../asset/genres';
+import { Wrapper } from './styles/Styles';
+import { Color } from '../../../utils/color/colors';
 
 export default function MovieByCategory({ navigation, route }: any) {
 
-    const genre = route.params.genre;
+    const [ genre, setGenre ] = useState<string>(route.params.genre);
+    const [open, setOpen] = useState<boolean>(false);
+    const [items, setItems] = useState<Genre[]>(GENRES);
 
+    
   const { isLoading, data, hasNextPage, fetchNextPage, isFetchingNextPage, isError } =
     useInfiniteQuery('movies', async ({ pageParam = 1 }) => {
       const result = await axios.get(`https://yts.mx/api/v2/list_movies.json?genre=${ genre }&limit=15&page=${pageParam}`)
@@ -22,7 +30,7 @@ export default function MovieByCategory({ navigation, route }: any) {
       getNextPageParam: (lastPage, pages) => {
         if (lastPage.nextPage < lastPage.totalPages) return lastPage.nextPage;
         return undefined;
-      }, cacheTime: 0
+      }, cacheTime: 0, enabled: !!genre
     });
 
   const loadMore = () => {
@@ -45,15 +53,28 @@ export default function MovieByCategory({ navigation, route }: any) {
   if(isError) return <Text>Error Occured</Text>
 
   return (
-    <FlatList
-      contentContainerStyle={{ width: "100%", justifyContent: "center", paddingHorizontal: 10 }}
-      numColumns={3}
-      data={ data?.pages.map(page => page?.result.data?.data?.movies).flat() }
-      keyExtractor={ gameItemExtractorKey }
-      renderItem={ renderItem }
-      onEndReached={ loadMore }
-      onEndReachedThreshold={ 0.3 }
-      ListFooterComponent={ isFetchingNextPage ? <Loading size={ 50 } /> : null}
-    />
+    <Wrapper>
+        <DropDownPicker
+            containerStyle={{ paddingHorizontal: 10, marginTop: 10 }}
+            dropDownContainerStyle={{ marginLeft: 10 , borderColor: Color.main, borderWidth: 2 }}
+            open={ open }
+            value={genre}
+            items={items}
+            setOpen={setOpen}
+            setValue={setGenre}
+            setItems={setItems}
+            />
+        <FlatList
+            contentContainerStyle={{ width: "100%", justifyContent: "center", paddingHorizontal: 10 }}
+            numColumns={3}
+            data={ data?.pages.map(page => page?.result.data?.data?.movies).flat() }
+            keyExtractor={ gameItemExtractorKey }
+            renderItem={ renderItem }
+            onEndReached={ loadMore }
+            onEndReachedThreshold={ 0.3 }
+            ListFooterComponent={ isFetchingNextPage ? <Loading size={ 50 } /> : null}
+            />
+    </Wrapper>
+    
   )
 }

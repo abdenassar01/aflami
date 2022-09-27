@@ -39,3 +39,7 @@ export const SearchAvatar = styled(Image)`
     height: 30px;
     width: 30px;
 `
+
+export const Search = styled(TouchableOpacity)`
+
+`

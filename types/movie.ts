@@ -11,6 +11,7 @@ type Torrent = {
 export type Movie = {
     id: number,
     title: string,
+    url: string,
     year: number,
     rating: number,
     genres: string[],

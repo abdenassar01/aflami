@@ -1,4 +1,4 @@
-import { Image, Text, View, Pressable } from "react-native";
+import { Image, Text, View, Pressable, TouchableOpacity } from "react-native";
 import styled from "styled-components";
 
 export const CardWrapper = styled(Pressable)`

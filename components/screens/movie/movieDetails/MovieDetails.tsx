@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { Text } from "react-native";
+import { useCallback, useEffect, useState } from "react";
+import { Alert, Linking, Text } from "react-native";
 import { Movie } from "../../../../types/movie";
 import Loading from "../../../utils/loading/Loading";
-import { ButtonText, DetailsWrapper, Genre, GenreItem, GenresWrapper, GoBackBtn, Heading, Info, MovieDetailsWrapper, Qualities, QualityItem, QualityItemText, SmallHeading, Streamer, Title } from "./styles/Styles";
+import { ButtonText, DetailsWrapper, Genre, GenreItem, GenresWrapper, GoBackBtn, Heading, Info, MovieDetailsWrapper, Play, PlayIcon, Qualities, QualityItem, QualityItemText, SmallHeading, Streamer, Title } from "./styles/Styles";
 
 export default function MovieDetails({ navigation, route }: any) {
 
@@ -28,6 +28,19 @@ export default function MovieDetails({ navigation, route }: any) {
     } 
     fetchData();
   },[])
+ 
+  const url = movie?.url ?? ""
+
+  const handlePress = useCallback(async () => {
+    const supported = await Linking.canOpenURL(url);
+
+    if (supported) {
+     
+      await Linking.openURL(url);
+    } else {
+      Alert.alert(`Don't know how to open this URL: ${url}`);
+    }
+  }, [url])
 
   if(loading) return <Loading size={ 70 } />
   if(error) return <Text>Error Occured</Text>
@@ -40,6 +53,9 @@ export default function MovieDetails({ navigation, route }: any) {
       <DetailsWrapper>
         <Streamer source={{ uri: movie?.background_image }} />
         <Title>{ movie?.title }</Title>
+        <Play onPress={ handlePress }>
+          <PlayIcon source={require("../../../../asset/play.png")} />
+        </Play>
         <Heading>Genres:</Heading>
         <GenresWrapper>
           {

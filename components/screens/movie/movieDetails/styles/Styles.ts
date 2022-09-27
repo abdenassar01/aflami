@@ -80,3 +80,13 @@ export const QualityItemText = styled(Text)`
     font-weight: 700;
     color: white;
 `
+
+export const Play = styled(TouchableOpacity)`
+    position: absolute;
+    left: 43%;
+    top: 15%;
+`
+
+export const PlayIcon = styled(Image)`
+
+`

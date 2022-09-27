@@ -20,3 +20,7 @@ export type Movie = {
     download_count: number,
     torrents: Torrent[]
 } 
+
+export type MovieProp = {
+    item: Movie
+}

@@ -1,12 +1,11 @@
 import { FlatList, Text } from 'react-native';
-import { Movie } from '../../../../types/movie';
+import { Movie, MovieProp } from '../../../../types/movie';
 import Card from '../../../utils/card/Card'
 import Loading from '../../../utils/loading/Loading';
 import { useInfiniteQuery } from "react-query";
 import axios from "axios";
 
 export default function MoviesList({ navigation }: any) {
-
 
   const { isLoading, data, hasNextPage, fetchNextPage, isFetchingNextPage, isError } =
     useInfiniteQuery('movies', async ({ pageParam = 1 }) => {
@@ -30,14 +29,14 @@ export default function MoviesList({ navigation }: any) {
     }
   };
 
-  const renderItem = ({item}) => {
+  const renderItem = ({ item } : MovieProp) => {
     return (
       <Card key={ item.id } navigation={ navigation } movie={ item } />
     );
   };
 
-  const gameItemExtractorKey = (item) => {
-    return Math.random().toString()
+  const gameItemExtractorKey = (item: Movie) => {
+    return item.id.toString()
   };
 
   if(isLoading) return <Loading size={ 70 } />

@@ -35,7 +35,7 @@ export default function MovieDetails({ navigation, route }: any) {
      
       await Linking.openURL(url);
     } else {
-      Alert.alert(`Don't know how to open this URL: ${url}`);
+      Alert.alert(`can't open this URL: ${url}`);
     }
   }, [movie])
 

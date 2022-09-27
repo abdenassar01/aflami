@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Series from './screens/series/Series';
 import { Image } from 'react-native';
 import MovieStack from './screens/movie/MovieStack';
+import AboutScreen from './screens/about/AboutScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -11,7 +11,7 @@ const Tabs = () => {
       <Tab.Screen name='Movies' component={ MovieStack } options={{
         tabBarIcon: () => (<Image source={ require("../asset/movie.png")} style={{width: 30, height: 30}} />)
       }}/>
-      <Tab.Screen name='Series' component={ Series } options={{
+      <Tab.Screen name='About' component={ AboutScreen } options={{
         tabBarIcon: () => (<Image source={ require("../asset/film.png")} style={{width: 30, height: 30}} />)
       }}/>
     </Tab.Navigator>

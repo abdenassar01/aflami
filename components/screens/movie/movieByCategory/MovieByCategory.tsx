@@ -13,9 +13,8 @@ import { Color } from '../../../utils/color/colors';
 export default function MovieByCategory({ navigation, route }: any) {
 
     const [ genre, setGenre ] = useState<string>(route.params.genre);
-    const [open, setOpen] = useState<boolean>(false);
-    const [items, setItems] = useState<Genre[]>(GENRES);
-
+    const [ open, setOpen ] = useState<boolean>(false);
+    const [ items, setItems ] = useState<Genre[]>(GENRES);
     
   const { isLoading, data, hasNextPage, fetchNextPage, isFetchingNextPage, isError } =
     useInfiniteQuery('movies', async ({ pageParam = 1 }) => {

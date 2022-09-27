@@ -44,7 +44,7 @@ export default function MoviesList({ navigation }: any) {
 
   return (
     <FlatList
-      contentContainerStyle={{ width: "100%", justifyContent: "center", paddingHorizontal: 10 }}
+      contentContainerStyle={{ width: "100%", justifyContent: "center", paddingHorizontal: 10, backgroundColor: "white" }}
       numColumns={3}
       data={ data?.pages.map(page => page?.result.data?.data?.movies).flat() }
       keyExtractor={ gameItemExtractorKey }

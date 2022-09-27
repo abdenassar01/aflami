@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
 import styled from "styled-components";
 import { Color } from "../../../../utils/color/colors";
 
-export const MovieDetailsWrapper = styled(View)`
+export const MovieDetailsWrapper = styled(ScrollView)`
     background-color: white;
     min-height: 100%;
 `
@@ -48,6 +48,20 @@ export const Heading = styled(Text)`
     margin: 5px 0;
     font-size: 14px;
     color: black;
+    font-weight: 500;
+`
+
+export const GenresWrapper = styled(View)`
+    flex-direction: row;
+`
+
+export const GenreItem = styled(TouchableOpacity)`
+    
+`
+
+export const Genre = styled(Text)`
+    color: ${ Color.main };
+    margin-right: 20px; 
     font-weight: 500;
 `
 

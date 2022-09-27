@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Text } from "react-native";
 import { Movie } from "../../../../types/movie";
 import Loading from "../../../utils/loading/Loading";
-import { ButtonText, DetailsWrapper, GoBackBtn, Heading, Info, MovieDetailsWrapper, Qualities, QualityItem, QualityItemText, SmallHeading, Streamer, Title } from "./styles/Styles";
+import { ButtonText, DetailsWrapper, Genre, GenreItem, GenresWrapper, GoBackBtn, Heading, Info, MovieDetailsWrapper, Qualities, QualityItem, QualityItemText, SmallHeading, Streamer, Title } from "./styles/Styles";
 
 export default function MovieDetails({ navigation, route }: any) {
 
@@ -40,9 +40,16 @@ export default function MovieDetails({ navigation, route }: any) {
       <DetailsWrapper>
         <Streamer source={{ uri: movie?.background_image }} />
         <Title>{ movie?.title }</Title>
+        <Heading>Genres:</Heading>
+        <GenresWrapper>
+          {
+            movie?.genres.map(genre => <GenreItem key={ Math.random() } onPress={ () => console.log(genre) }><Genre>{ genre }</Genre></GenreItem>)
+          }
+        </GenresWrapper>
         <Info>
           <SmallHeading>Rating: { movie?.rating }</SmallHeading>
           <SmallHeading>Year: { movie?.year }</SmallHeading>
+          <SmallHeading>Download Count: { movie?.download_count }</SmallHeading>
         </Info>
         <Heading>Available Quality:</Heading>
         <Qualities horizontal={true}>

@@ -17,5 +17,6 @@ export type Movie = {
     medium_cover_image: string,
     background_image: string,
     description_full: string,
+    download_count: number,
     torrents: Torrent[]
 } 

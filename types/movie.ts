@@ -5,13 +5,14 @@ export type CardProps = {
 
 type Torrent = {
     quality: string,
-    size: string
+    size: string,
+    url: string,
+
 }
 
 export type Movie = {
     id: number,
     title: string,
-    url: string,
     year: number,
     rating: number,
     genres: string[],

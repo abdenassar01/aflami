@@ -6,6 +6,7 @@ export const Loader = styled(View)`
     justify-content: center;
     align-items: center;
     padding: 8px;
+    background-color: white;
 `
 
 export const StyledText = styled(Text)`

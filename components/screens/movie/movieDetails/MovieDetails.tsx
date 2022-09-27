@@ -29,18 +29,15 @@ export default function MovieDetails({ navigation, route }: any) {
     fetchData();
   },[])
  
-  const url = movie?.url ?? ""
-
-  const handlePress = useCallback(async () => {
+  const handlePress = useCallback(async (url: string) => {
     const supported = await Linking.canOpenURL(url);
-
     if (supported) {
      
       await Linking.openURL(url);
     } else {
       Alert.alert(`Don't know how to open this URL: ${url}`);
     }
-  }, [url])
+  }, [movie])
 
   if(loading) return <Loading size={ 70 } />
   if(error) return <Text>Error Occured</Text>
@@ -53,7 +50,7 @@ export default function MovieDetails({ navigation, route }: any) {
       <DetailsWrapper>
         <Streamer source={{ uri: movie?.background_image }} />
         <Title>{ movie?.title }</Title>
-        <Play onPress={ handlePress }>
+        <Play onPress={ () => handlePress(movie?.torrents[0].url ?? "") }>
           <PlayIcon source={require("../../../../asset/play.png")} />
         </Play>
         <Heading>Genres:</Heading>
@@ -70,7 +67,7 @@ export default function MovieDetails({ navigation, route }: any) {
         <Heading>Available Quality:</Heading>
         <Qualities horizontal={true}>
           {
-            movie?.torrents.map(torrent => <QualityItem key={ torrent.quality } onPress={ () => console.log(`${ torrent.size } has been pressed`) }><QualityItemText>{ torrent.quality }</QualityItemText></QualityItem>)
+            movie?.torrents.map(torrent => <QualityItem key={ torrent.quality } onPress={ () => handlePress(torrent.url ?? "") }><QualityItemText>{ torrent.quality }</QualityItemText></QualityItem>)
           }
         </Qualities>
         <Heading>Discription: </Heading>

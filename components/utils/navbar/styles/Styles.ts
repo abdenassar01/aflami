@@ -12,8 +12,9 @@ export const NavBarWrapper = styled(View)`
 `
 
 export const Logo = styled(Image)`
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
 `
 
 export const Field = styled(View)`

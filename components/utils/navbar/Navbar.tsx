@@ -1,5 +1,7 @@
 import { Field, GoHome, InputField, Logo, NavBarWrapper, Search, SearchAvatar } from "./styles/Styles";
 import { useNavigation } from '@react-navigation/native';
+import { Text } from "react-native";
+import { Color } from "../color/colors";
 
 export default function Navbar() {
 
@@ -8,14 +10,18 @@ export default function Navbar() {
   return (
     <NavBarWrapper>
       <GoHome onPress={ () => navigation.canGoBack() && navigation.goBack() }>
-        <Logo source={require("../../../asset/movie.png")} />
+        <Logo source={require("../../../asset/logo.png")} />
       </GoHome>
-      <Field>
+      <Text style={{ fontWeight: '800', fontSize: 18, color: Color.secondary }}>Movies </Text>
+      
+      {/* <Field>
         <InputField placeholder="Tap to search"></InputField>
         <Search onPress={ () => console.log("Hello World") }>
           <SearchAvatar source={require("../../../asset/search.png")} />
         </Search>
-      </Field>
+      </Field> */}
+       {/* TODO: skipped search for now  */}
+
     </NavBarWrapper>
   )
 }

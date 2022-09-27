@@ -1,6 +1,6 @@
 export const Color = {
     "main": "#027afc",
-    "secondary": "#000",
+    "secondary": "#f200fa",
     "tertiary": "#666",
     "darkBack": "#12f"
 }

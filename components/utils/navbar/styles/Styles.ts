@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Image, TextInput, View } from "react-native";
+import { Image, TextInput, TouchableOpacity, View } from "react-native";
 import { Color } from "../../color/colors";
 
 export const NavBarWrapper = styled(View)`
@@ -29,6 +29,10 @@ export const Field = styled(View)`
 export const InputField = styled(TextInput)`
     width: 75%;
     height: 40px;
+`
+
+export const GoHome = styled(TouchableOpacity)`
+
 `
 
 export const SearchAvatar = styled(Image)`

@@ -2,8 +2,8 @@ import { Image, Text, View, Pressable, TouchableOpacity } from "react-native";
 import styled from "styled-components";
 
 export const CardWrapper = styled(Pressable)`
-    padding: 5px;
-    width: 125px;
+    width: 30%;
+    margin: 5px;
 `
 
 export const Cover = styled(Image)`

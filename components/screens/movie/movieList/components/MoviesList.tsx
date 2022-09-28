@@ -1,7 +1,7 @@
 import { FlatList, Text } from 'react-native';
-import { Movie, MovieProp } from '../../../../types/movie';
-import Card from '../../../utils/card/Card'
-import Loading from '../../../utils/loading/Loading';
+import { Movie, MovieProp } from '../../../../../types/movie';
+import Card from '../../../../utils/card/Card'
+import Loading from '../../../../utils/loading/Loading';
 import { useInfiniteQuery } from "react-query";
 import axios from "axios";
 
@@ -9,7 +9,7 @@ export default function MoviesList({ navigation }: any) {
 
   const { isLoading, data, hasNextPage, fetchNextPage, isFetchingNextPage, isError } =
     useInfiniteQuery('movies', async ({ pageParam = 1 }) => {
-      const result = await axios.get(`https://yts.mx/api/v2/list_movies.json?limit=15&page=${pageParam}`)
+      const result = await axios.get(`https://yts.mx/api/v2/list_movies.json?sort_by=download_count&limit=15&page=${pageParam}`)
       return { 
         result, 
         nextPage: pageParam + 1, 
@@ -20,7 +20,7 @@ export default function MoviesList({ navigation }: any) {
       getNextPageParam: (lastPage, pages) => {
         if (lastPage.nextPage < lastPage.totalPages) return lastPage.nextPage;
         return undefined;
-      }
+      }, cacheTime: 0
     });
 
   const loadMore = () => {

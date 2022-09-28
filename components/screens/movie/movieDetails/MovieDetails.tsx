@@ -67,7 +67,7 @@ export default function MovieDetails({ navigation, route }: any) {
         <Heading>Available Quality:</Heading>
         <Qualities horizontal={true}>
           {
-            movie?.torrents.map(torrent => <QualityItem key={ torrent.quality } onPress={ () => handlePress(torrent.url ?? "") }><QualityItemText>{ torrent.quality }</QualityItemText></QualityItem>)
+            movie?.torrents.map(torrent => <QualityItem key={ Math.random() } onPress={ () => handlePress(torrent.url ?? "") }><QualityItemText>{ torrent.quality }</QualityItemText></QualityItem>)
           }
         </Qualities>
         <Heading>Discription: </Heading>

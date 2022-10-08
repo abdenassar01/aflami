@@ -3,12 +3,13 @@ import styled from "styled-components";
 
 export const CardWrapper = styled(Pressable)`
     width: 30%;
-    margin: 5px;
+    margin-right: 5%;
+    margin-bottom: 5%;
 `
 
 export const Cover = styled(Image)`
     height: 170px;
-    width: 115px;
+    width: 100%;
     border-radius: 10px;
 `
 

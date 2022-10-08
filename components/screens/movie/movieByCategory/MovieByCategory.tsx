@@ -60,7 +60,7 @@ export default function MovieByCategory({ navigation, route }: any) {
   return (
     <Wrapper>
         <DropDownPicker
-            containerStyle={{ paddingHorizontal: 10, marginTop: 10 }}
+            containerStyle={{ paddingHorizontal: 10, marginTop: 10 , marginBottom: 20 }}
             dropDownContainerStyle={{ marginLeft: 10 , borderColor: Color.main, borderWidth: 2,  }}
             open={ open }
             value={ genre }

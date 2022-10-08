@@ -12,7 +12,11 @@ export default function Navbar() {
       <GoHome onPress={ () => navigation.canGoBack() && navigation.goBack() }>
         <Logo source={require("../../../asset/logo.png")} />
       </GoHome>
-      <Text style={{ fontWeight: '800', fontSize: 18, color: Color.secondary }}>Aflami</Text>
+      <Text 
+        style={{ fontWeight: '800', fontSize: 20, color: Color.main, marginRight: 3 }}
+        >
+        Aflami
+      </Text>
       
       {/* <Field>
         <InputField placeholder="Tap to search"></InputField>

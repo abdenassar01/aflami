@@ -13,8 +13,8 @@ export default function Navbar() {
         <Logo source={ require("../../../asset/logo.png") } />
       </GoHome>   
       <Field>
-        <InputField placeholder="Tap to search" value={ title } onChange={ (e) => setTitle(e.target.value) }></InputField>
-        <Search onPress={ () => navigation.navigate('SearchMovie', { title: title }) }>
+        <InputField placeholder="Tap to search" value={ title } onChangeText={ setTitle } ></InputField>
+        <Search onPress={ () => navigation.navigate('SearchMovie', { movieTitle: title }) }>
           <SearchAvatar source={require("../../../asset/search.png")} />
         </Search>
       </Field>

@@ -17,7 +17,7 @@ export default function MovieDetails({ navigation, route }: any) {
       setLoading(true);
      
       try{
-        const res = await fetch(`https://yts.torrentbay.to/api/v2/movie_details.json?movie_id=${ id }`);
+        const res = await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${ id }`);
         const json = await res.json();
         setMovie(json.data?.movie);
       }catch(ex){

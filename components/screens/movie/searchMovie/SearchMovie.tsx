@@ -1,11 +1,10 @@
 import axios from 'axios';
 import { useEffect } from 'react';
-import { Text } from 'react-native'
+import { ScrollView, Text } from 'react-native'
 import { useQuery } from 'react-query';
 import { Movie } from '../../../../types/movie';
 import Card from '../../../utils/card/Card';
 import Loading from '../../../utils/loading/Loading';
-import { ScreenWrapper } from './styles/Styles';
 
 export default function SearchMovie({ route, navigation }: any) {
 
@@ -25,7 +24,7 @@ export default function SearchMovie({ route, navigation }: any) {
     if( error ) return <Text>Error </Text>
 
   return (
-    <ScreenWrapper 
+    <ScrollView 
         contentContainerStyle={{ width: "100%", flexDirection: 'row', flexWrap: 'wrap', justifyContent: "center", backgroundColor: "white" }}  
         >
         {
@@ -33,6 +32,6 @@ export default function SearchMovie({ route, navigation }: any) {
                 <Card key={ movie.id } movie={ movie } navigation={ navigation } />
             )
         }
-    </ScreenWrapper>
+    </ScrollView>
   )
 }

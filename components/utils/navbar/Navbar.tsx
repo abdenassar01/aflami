@@ -1,7 +1,5 @@
 import { Field, GoHome, InputField, Logo, NavBarWrapper, Search, SearchAvatar } from "./styles/Styles";
 import { useNavigation } from '@react-navigation/native';
-import { Text } from "react-native";
-import { Color } from "../color/colors";
 
 export default function Navbar() {
 
@@ -14,7 +12,7 @@ export default function Navbar() {
       </GoHome>   
       <Field>
         <InputField placeholder="Tap to search"></InputField>
-        <Search onPress={ () => console.log("Hello World") }>
+        <Search onPress={ () => navigation.navigate("SearchMovie") }>
           <SearchAvatar source={require("../../../asset/search.png")} />
         </Search>
       </Field>

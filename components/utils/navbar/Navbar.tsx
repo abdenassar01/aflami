@@ -11,21 +11,13 @@ export default function Navbar() {
     <NavBarWrapper>
       <GoHome onPress={ () => navigation.canGoBack() && navigation.goBack() }>
         <Logo source={require("../../../asset/logo.png")} />
-      </GoHome>
-      <Text 
-        style={{ fontWeight: '800', fontSize: 20, color: Color.main, marginRight: 3 }}
-        >
-        Aflami
-      </Text>
-      
-      {/* <Field>
+      </GoHome>   
+      <Field>
         <InputField placeholder="Tap to search"></InputField>
         <Search onPress={ () => console.log("Hello World") }>
           <SearchAvatar source={require("../../../asset/search.png")} />
         </Search>
-      </Field> */}
-       {/* TODO: skipped search for now  */}
-
+      </Field>
     </NavBarWrapper>
   )
 }

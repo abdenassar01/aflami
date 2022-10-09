@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useEffect } from 'react';
 import { Text } from 'react-native'
 import { useQuery } from 'react-query';
 import { Movie } from '../../../../types/movie';
@@ -10,19 +11,25 @@ export default function SearchMovie({ route, navigation }: any) {
 
     const title = route.params.movieTitle;
 
-    const { isLoading, data, error } = useQuery("SearchMovieByName", async () => {
-        const result = await axios.get(`https://yts.mx/api/v2/list_movies.json?query_term=${ title }&limit=9`);
-        console.log(result.data)
+    const { isLoading, data, error, refetch } = useQuery("SearchMovieByName", async () => {
+        const result = await axios.get(`https://yts.mx/api/v2/list_movies.json?query_term=${ title }&limit=10`);
         return result.data
     })
 
+    useEffect(() => {
+     refetch()
+    }, [title])
+    
+
     if( isLoading ) return <Loading size={ 30 } />
-    if( error ) return <Text>Error: { error?.message } </Text>
+    if( error ) return <Text>Error </Text>
 
   return (
-    <ScreenWrapper>
+    <ScreenWrapper 
+        contentContainerStyle={{ width: "100%", flexDirection: 'row', flexWrap: 'wrap', justifyContent: "center", backgroundColor: "white" }}  
+        >
         {
-            data?.data.movies.map((movie:Movie) => 
+            data?.data?.movies?.map((movie:Movie) => 
                 <Card key={ movie.id } movie={ movie } navigation={ navigation } />
             )
         }

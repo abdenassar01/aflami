@@ -17,8 +17,8 @@ export default function MovieByCategory({ navigation, route }: any) {
   const [ items, setItems ] = useState<Genre[]>(GENRES);
   
   const { isFetching, data, hasNextPage, fetchNextPage, isFetchingNextPage, isError, refetch } =
-    useInfiniteQuery('movies', async ({ pageParam = 1 }) => {
-      const result = await axios.get(`https://yts.mx/api/v2/list_movies.json?sort_by=download_count&genre=${ genre }&limit=15&page=${pageParam}`)
+    useInfiniteQuery('moviesByCategory', async ({ pageParam = 1 }) => {
+      const result = await axios.get(`https://yts.mx/api/v2/list_movies.json?sort_by=download_count&genre=${ genre }&limit=15&page=${pageParam}`);
       return { 
         result, 
         nextPage: pageParam + 1, 
@@ -29,9 +29,8 @@ export default function MovieByCategory({ navigation, route }: any) {
       getNextPageParam: (lastPage, pages) => {
         if (lastPage.nextPage < lastPage.totalPages) return lastPage.nextPage;
         return undefined;
-      }, cacheTime: 0,     refetchOnWindowFocus: true,
+      }, cacheTime: 0, refetchOnWindowFocus: true,
       staleTime: 0,
-      refetchInterval: 0,
     });
 
   const loadMore = () => {
@@ -78,7 +77,7 @@ export default function MovieByCategory({ navigation, route }: any) {
             onEndReached={ loadMore }
             onEndReachedThreshold={ 0.3 }
             ListFooterComponent={ isFetchingNextPage ? <Loading size={ 50 } /> : null}
-            />
+          />
     </Wrapper> 
   )
 }

@@ -40,7 +40,7 @@ export default function MoviesList({ navigation }: any) {
   };
 
   if(isLoading) return <Loading size={ 70 } />
-  if(isError) return <Text>Error Occured</Text>
+  if(isError) return navigation.navigate('Error')
 
   return (
     <FlatList

@@ -40,7 +40,7 @@ export default function MovieDetails({ navigation, route }: any) {
   }, [movie])
 
   if(loading) return <Loading size={ 70 } />
-  if(error) return <Text>Error Occured</Text>
+  if(error) return navigation.navigate('Error')
 
   return (
     <MovieDetailsWrapper>

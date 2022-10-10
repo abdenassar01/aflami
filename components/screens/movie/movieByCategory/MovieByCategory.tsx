@@ -55,7 +55,7 @@ export default function MovieByCategory({ navigation, route }: any) {
   }, [genre])
 
   if(isFetching) return <Loading size={ 70 } />
-  if(isError) return <Text>Error Occured</Text>
+  if(isError) return navigation.navigate('Error');
 
   return (
     <Wrapper>

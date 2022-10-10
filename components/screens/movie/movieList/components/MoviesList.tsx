@@ -44,6 +44,7 @@ export default function MoviesList({ navigation }: any) {
     refetch()
   }, []);
 
+  refetch()
 
   if(isLoading) return <Loading size={ 70 } />
   if(isError) return navigation.navigate('Error')

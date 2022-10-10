@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 
 export default function MovieStack() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }} >
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name='MovieListScreen' component={ MovieListScreen } />
       <Stack.Screen name='MovieDetails' component={ MovieDetails } />
       <Stack.Screen name='MovieByCategory' component={ MovieByCategory } />

@@ -18,7 +18,7 @@ export default function MovieByCategory({ navigation, route }: any) {
   
   const { isFetching, data, hasNextPage, fetchNextPage, isFetchingNextPage, isError, refetch } =
     useInfiniteQuery('moviesByCategory', async ({ pageParam = 1 }) => {
-      const result = await axios.get(`https://yts.mx/api/v2/list_movies.json?sort_by=download_count&genre=${ genre }&limit=15&page=${pageParam}`);
+      const result = await axios.get(`https://yts.mx/api/v2/list_movies.json?&genre=${ genre }&limit=15&page=${pageParam}`);
       return { 
         result, 
         nextPage: pageParam + 1, 
@@ -59,7 +59,7 @@ export default function MovieByCategory({ navigation, route }: any) {
   return (
     <Wrapper>
         <DropDownPicker
-            containerStyle={{ paddingHorizontal: 10, marginTop: 10 , marginBottom: 20 }}
+            containerStyle={{ paddingHorizontal: 10, marginBottom: 20 }}
             dropDownContainerStyle={{ marginLeft: 10 , borderColor: Color.main, borderWidth: 2,  }}
             open={ open }
             value={ genre }

@@ -10,7 +10,7 @@ export default function SearchMovie({ route, navigation }: any) {
 
     const title = route.params.movieTitle;
 
-    const { isLoading, data, error, refetch } = useQuery("SearchMovieByName", async () => {
+    const { isFetching, data, error, refetch } = useQuery("SearchMovieByName", async () => {
         const result = await axios.get(`https://yts.mx/api/v2/list_movies.json?query_term=${ title }&limit=10`);
         return result.data
     })
@@ -20,7 +20,7 @@ export default function SearchMovie({ route, navigation }: any) {
     }, [title])
     
 
-    if( isLoading ) return <Loading size={ 30 } />
+    if( isFetching ) return <Loading size={ 30 } />
     if( error ) return <Text>Error </Text>
 
   return (

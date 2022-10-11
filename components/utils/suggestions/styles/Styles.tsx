@@ -6,5 +6,7 @@ export const SuggestionsWrapper = styled(ScrollView)`
 `
 
 export const Heading = styled(Text)`
-    
+    text-align: center;
+    color: red;
+    font-size: 13px;
 `

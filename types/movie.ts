@@ -26,3 +26,7 @@ export type Movie = {
 export type MovieProp = {
     item: Movie
 }
+
+export type MovieSuggestionProp = {
+    id: number | undefined
+}

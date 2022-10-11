@@ -1,9 +1,11 @@
 import { View, Text } from 'react-native'
+import { MovieSuggestionProp } from '../../../types/movie'
+import { SuggestionsWrapper } from './styles/Styles'
 
-export default function Suggesetions() {
+export default function Suggesetions({ id }: MovieSuggestionProp) {
   return (
-    <View>
-      <Text>Suggesetions</Text>
-    </View>
+    <SuggestionsWrapper >
+      <Text>Suggesetions Movie Id: { id }</Text>
+    </SuggestionsWrapper>
   )
 }

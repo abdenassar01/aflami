@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Alert, Linking, Text } from "react-native";
 import { Movie } from "../../../../types/movie";
 import Loading from "../../../utils/loading/Loading";
+import Suggesetions from "../../../utils/suggestions/Suggesetions";
 import { ButtonText, DetailsWrapper, Genre, GenreItem, GenresWrapper, GoBackBtn, Heading, Info, MovieDetailsWrapper, Play, PlayIcon, Qualities, QualityItem, QualityItemText, SmallHeading, Streamer, Title } from "./styles/Styles";
 
 export default function MovieDetails({ navigation, route }: any) {
@@ -74,6 +75,8 @@ export default function MovieDetails({ navigation, route }: any) {
         <SmallHeading>
           { movie?.description_full }
         </SmallHeading>
+        <Heading>Similar Movies: </Heading>
+        <Suggesetions id={ movie?.id } />
       </DetailsWrapper>
     </MovieDetailsWrapper>
   )

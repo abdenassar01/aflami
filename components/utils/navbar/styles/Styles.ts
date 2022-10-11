@@ -5,7 +5,7 @@ import { Color } from "../../color/colors";
 export const NavBarWrapper = styled(View)`
     padding: 0 10px;
     display: flex;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     justify-content: space-between;
     flex-direction: row;
     align-items: center;

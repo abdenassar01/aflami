@@ -1,13 +1,12 @@
 export type CardProps = {
     navigation: any,
-    movie: Movie
+    movie: Movie,
 }
 
 type Torrent = {
     quality: string,
     size: string,
     url: string,
-
 }
 
 export type Movie = {

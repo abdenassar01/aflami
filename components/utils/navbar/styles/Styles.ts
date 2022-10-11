@@ -21,16 +21,15 @@ export const Logo = styled(Image)`
 export const Field = styled(View)`
     flex-direction: row;
     align-items: center;
-    padding: 0 20px;
-    margin: 10px 2px;
+    padding: 0 10px;    
     border: 2px solid ${ Color.main };
     border-radius: 50px;
     justify-content: space-between;
 `
 
 export const InputField = styled(TextInput)`
-    width: 75%;
-    height: 40px;
+    width: 80%;
+    height: 35px;
 `
 
 export const GoHome = styled(TouchableOpacity)`
@@ -38,8 +37,8 @@ export const GoHome = styled(TouchableOpacity)`
 `
 
 export const SearchAvatar = styled(Image)`
-    height: 30px;
-    width: 30px;
+    height: 24px;
+    width: 24px;
 `
 
 export const Search = styled(TouchableOpacity)`

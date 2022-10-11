@@ -32,10 +32,6 @@ export const InputField = styled(TextInput)`
     height: 35px;
 `
 
-export const GoHome = styled(TouchableOpacity)`
-
-`
-
 export const SearchAvatar = styled(Image)`
     height: 24px;
     width: 24px;
